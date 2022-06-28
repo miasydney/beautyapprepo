@@ -25,16 +25,20 @@
       </li>
 
     <% if user_signed_in? %>
-    <li class="nav-item active">
+    
+    <button type="button" class="btn btn-light"> 
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    </li>
+    </button>
+
     <% else %>
-    <li class="nav-item active">
-    <%= link_to "Sign Up", new_user_registration_path %>
-    </li>
-    <li class="nav-item active">
-    <%= link_to "Sign In", new_user_session_path %>
-    </li>
+    <button type="button" class="btn btn-light"> 
+        <%= link_to "Sign In", new_user_session_path %>
+    </button>
+
+    <button type="button" class="btn btn-light"> 
+        <%= link_to "Sign Up", new_user_registration_path %>
+    </button>
+
     <% end %>
 
     </ul>
