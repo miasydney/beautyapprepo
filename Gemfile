@@ -30,8 +30,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 
 # custom gems
-gem 'bootstrap', '~> 5.1.3'
-gem 'jquery-rails'
+# gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
+# gem 'bootstrap', '~> 5.1.3'
+# gem 'jquery-rails'
 
 gem 'simple_form'
 
