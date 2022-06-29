@@ -12,9 +12,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/listings">Browse</a>
       </li>
+    <% if user_signed_in? %>
       <li class="nav-item">
         <a class="nav-link" href="/listings/new">Create Listing</a>
       </li>
+    <% end %>
+    
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           Dropdown
