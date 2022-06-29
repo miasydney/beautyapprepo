@@ -16,4 +16,11 @@ if Category.count == 0
 end
 
 
-# cities = []
+cities = ["Melbourne","Sydney","Brisbane","Gold Coast","Perth","Adelaide","Hobart","Geelong","Newcastle"]
+
+if City.count == 0
+    cities.each do |city|
+        City.create(name: city)
+        puts "created #{city} city"
+    end
+end
