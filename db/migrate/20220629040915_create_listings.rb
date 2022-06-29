@@ -5,7 +5,7 @@ class CreateListings < ActiveRecord::Migration[6.1]
       t.integer :price
       t.string :business
       t.string :instagram
-      t.boolean :booked
+      t.boolean :booked, default: :false
       t.date :date
       t.time :time
       t.references :user, null: false, foreign_key: true
