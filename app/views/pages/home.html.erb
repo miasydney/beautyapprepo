@@ -1,7 +1,11 @@
 <%# <h1>Pages#home</h1> %>
 <h1>The #1 place to find last minute beauty appointments in your city! 🤎 </h1>
 <br>
+
+<% if !user_signed_in? %>
 <p> Provide a service and want to start listing appointments? Sign up <a href="/users/sign_up">here</a>. </p>
+<% end %>
+
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <div class="row">
