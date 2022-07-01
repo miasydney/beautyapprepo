@@ -22,9 +22,11 @@
     </tr>
   </thead>
 
+  <%# note to self: style listings into cards %>
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
+        <td><%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
         <td><%= listing.title %></td>
         <td><%= listing.description %></td>
         <td><%= listing.price %></td>
