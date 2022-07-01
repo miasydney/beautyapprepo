@@ -68,6 +68,7 @@ class ListingsController < ApplicationController
       buyer_id: current_user.id
     )
 
+    # note to self: add some logic here to only redirect if order successfully placed
     redirect_to order_success_path
   end
 
