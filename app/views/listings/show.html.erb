@@ -8,7 +8,29 @@
   <% end %>
 </div>
 
-<%= button_to "BOOK APPOINTMENT", place_order_path %>
+<% if !@listing.booked && current_user && current_user.id == @listing.user_id %>
+
+  <p> Your appointment listing is available for booking. </p>
+
+<% elsif @listing.booked && current_user && current_user.id == @listing.user_id%>
+
+  <p> Congratulations! This listing has been reserved by: . Their contact email is: . </p>
+
+<% elsif @listing.booked %>
+  <p>NO LONGER AVAILABLE</p>
+
+<% elsif current_user %>
+  <%= button_to "BOOK APPOINTMENT", place_order_path %>
+
+<% else %>
+  <p> Please log in to reserve appointments </p>
+<% end %>
+
+<%# <% if current_user && !@listing.booked %>
+  <%# <%= button_to "BOOK APPOINTMENT", place_order_path %> %>
+<%# <% else %> %>
+  <%# <p> NO LONGER AVAILABLE </p> %>
+<%# <% end %> %> %>
 
 <p>
   <strong>Title:</strong>
