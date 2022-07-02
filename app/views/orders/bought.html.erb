@@ -1,2 +1,43 @@
-<h1>Orders#bought</h1>
+<h1>Appointments you have reserved: </h1>
 <p>Find me in app/views/orders/bought.html.erb</p>
+
+Shows a list of appointments that the current user has booked.
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Business</th>
+      <th>Instagram</th>
+      <th>Booked</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Seller</th>
+      <th>Category</th>
+      <th>City</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%# note to self: style listings into cards %>
+  <tbody>
+  <%# @booked_appointments instance variable has been defined in orders_controller bought method %>
+    <% @booked_appointments.each do |appointment| %>
+      <tr>
+        <td><%= image_tag appointment.listing.picture, class:"card-img-top" if appointment.listing.picture.attached? %></td>
+        <td><%= appointment.listing.title %></td>
+        <td><%= appointment.listing.description %></td>
+        <td><%= number_to_currency(appointment.listing.price) %></td>
+        <td><%= appointment.listing.business %></td>
+        <td><%= appointment.listing.instagram %></td>
+        <td><%= appointment.listing.date %></td>
+        <td><%= (appointment.listing.time).strftime("%H:%M %p") %></td>
+        <td><%= appointment.seller.firstname %></td>
+        <td><%= appointment.listing.category.name %></td>
+        <td><%= appointment.listing.city.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
