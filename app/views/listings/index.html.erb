@@ -4,52 +4,47 @@
 <p>Note: also add logic to not show appointments where time has passed.</p>
 <p>+ order them from most recent using time</p>
 
-<h1>Listings</h1>
+<%# dropdown menu to change city of listings being displayed %>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+  Change city</button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to "Melbourne", listings_path, style: "dropdown-item" %>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Business</th>
-      <th>Instagram</th>
-      <th>Booked</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>User</th>
-      <th>Category</th>
-      <th>City</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <%# <%= listing.category.name %>
 
-  <%# note to self: style listings into cards %>
-  <tbody>
+
+<h1>Available appointments</h1>
+
+  <%# styles listings into cards %>
     <% @listings.each do |listing| %>
-      <tr>
-        <td><%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
-        <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.price %></td>
-        <td><%= listing.business %></td>
-        <td><%= listing.instagram %></td>
-        <td><%= listing.booked %></td>
-        <td><%= listing.date %></td>
-        <td><%= listing.time %></td>
-        <td><%= listing.user_id %></td>
-        <td><%= listing.category_id %></td>
-        <td><%= listing.city_id %></td>
-        <td><%= link_to 'View', listing %></td>
-        <% if current_user && current_user.id == listing.user_id %>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="card"style="width: 18rem;">
+        <%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
+        <div class="card-body">
+        <h5 class="card-title"><%= listing.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"> Location: <%= listing.business %>, <%= listing.city.name %></h6>
 
+        <p class="card-text"><%= listing.description %></p>
+        Price: <%= number_to_currency(listing.price) %>
+        <%= listing.booked %>
+        <%= listing.date %>
+        <%= (listing.time).strftime("%H:%M %p") %>
+        <%= listing.user_id %>
+
+        <%= link_to 'See More', listing, class: 'btn btn-primary' %>
+
+        <% if current_user && current_user.id == listing.user_id %>
+        <br>
+        <%= link_to 'EDIT', edit_listing_path(listing), class: 'btn btn-primary' %>
+        <%= link_to 'DELETE', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
+        <% end %>
+        </div>
+      </div>
+      <br><br>
+    <% end %>
 <br>
 
 <%= link_to 'New Listing', new_listing_path %>
