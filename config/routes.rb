@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/melbourne', to: 'listings#melbourne'
   get '/sydney', to: 'listings#sydney'
   get '/brisbane', to: 'listings#brisbane'
-  get '/gold-coast', to: 'listings#goldcoast'
+  get '/gold-coast', to: 'listings#goldcoast', as: 'goldcoast'
   get '/perth', to: 'listings#perth'
   get '/adelaide', to: 'listings#adelaide'
   get '/hobart', to: 'listings#hobart'

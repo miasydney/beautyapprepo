@@ -11,50 +11,59 @@
 </div>
 <br>
 
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# lower section %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+       <h1 class="display-4"><%= link_to "Melbourne", melbourne_path %></h1>
+      </div>
+    </div>
+  </div>
 
-<div class="jumbotron jumbotron-fluid col-md-6">
-  <div class="container">
-    <h1 class="display-4"> <%= link_to "Melbourne", melbourne_path %></h1>
-  </div>
-</div>
-<div class="jumbotron jumbotron-fluid col-md-6">
-  <div class="container">
-    <h1 class="display-4"> Sydney</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
-<div class="jumbotron jumbotron-fluid col-md-6"">
-  <div class="container">
-    <h1 class="display-4"> Gold Coast</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
-<div class="jumbotron jumbotron-fluid col-md-6"">
-  <div class="container">
-    <h1 class="display-4"> Brisbane </h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  <div class="col-md-6">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4"><%= link_to "Sydney", sydney_path %></h1>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+  <div class="col-md-6">
     <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4"><%= link_to "Melbourne", melbourne_path %></h1>
+      <div class="container">
+       <h1 class="display-4"><%= link_to "Perth", perth_path %></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4"><%= link_to "Brisbane", brisbane_path %></h1>
+      </div>
+    </div>
   </div>
 </div>
-    </div>
-    <div class="col-md-6">
+
+<%# lower section %>
+<div class="row">
+  <div class="col-md-6">
     <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4"><%= link_to "Melbourne", melbourne_path %></h1>
+      <div class="container">
+       <h1 class="display-4"><%= link_to "Gold Coast", goldcoast_path %></h1>
+      </div>
     </div>
-    </div>
+  </div>
 
+  <div class="col-md-6">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4"><%= link_to "Adelaide", adelaide_path %></h1>
+      </div>
     </div>
-
-</div><p>gold coast</p>
-<p>brisbane</p>
-<p>perth</p>
+  </div>
+</div>
 
