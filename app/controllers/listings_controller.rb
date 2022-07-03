@@ -20,7 +20,27 @@ class ListingsController < ApplicationController
   def sydney
     @listings = Listing.where(city_id: 2)
   end
-
+  def brisbane
+    @listings = Listing.where(city_id: 3)
+  end
+  def goldcoast
+    @listings = Listing.where(city_id: 4)
+  end
+  def perth
+    @listings = Listing.where(city_id: 5)
+  end
+  def adelaide
+    @listings = Listing.where(city_id: 6)
+  end
+  def hobart
+    @listings = Listing.where(city_id: 7)
+  end
+  def geelong
+    @listings = Listing.where(city_id: 8)
+  end
+  def newcastle
+    @listings = Listing.where(city_id: 9)
+  end
 
   # GET /listings/new
   def new

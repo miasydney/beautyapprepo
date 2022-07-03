@@ -1,4 +1,24 @@
-<% @listings.each do |listing| %>
+
+<div class="dropdown" style="float:right"> 
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+  Change city</button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/listings">View All</a>
+    <a class="dropdown-item" href="/sydney">Sydney</a>
+    <a class="dropdown-item" href="/melbourne">Melbourne</a>
+    <a class="dropdown-item" href="/brisbane">Brisbane</a>
+    <a class="dropdown-item" href="/gold-coast">Gold Coast</a>
+    <a class="dropdown-item" href="/perth">Perth</a>
+    <a class="dropdown-item" href="/adelaide">Adelaide</a>
+    <a class="dropdown-item" href="/hobart">Hobart</a>
+    <a class="dropdown-item" href="/geelong">Geelong</a>
+    <a class="dropdown-item" href="/newcastle">Newcastle</a>
+
+  </div>
+</div>
+
+<%# this iterates over each listing within the listings table in the database and displays their attributes %>
+    <% @listings.each do |listing| %>
     <div class="card"style="width: 18rem;">
         <%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
         <div class="card-body">
@@ -23,3 +43,4 @@
       </div>
       <br><br>
     <% end %>
+<br>
