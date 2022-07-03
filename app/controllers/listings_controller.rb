@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
   def show
   end
 
+
   # GET /listings/new
   def new
     @listing = Listing.new
