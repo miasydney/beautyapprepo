@@ -13,13 +13,12 @@
 
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<div class="jumbotron jumbotron-fluid col-md-6"">
+<div class="jumbotron jumbotron-fluid col-md-6">
   <div class="container">
-    <h1 class="display-4"> Melbourne</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4"> <%= link_to "Melbourne", melbourne_path %></h1>
   </div>
 </div>
-<div class="jumbotron jumbotron-fluid col-md-6"">
+<div class="jumbotron jumbotron-fluid col-md-6">
   <div class="container">
     <h1 class="display-4"> Sydney</h1>
     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
@@ -40,12 +39,21 @@
 
 <div class="row">
     <div class="col-md-6">
-    <p>melbourne</p>
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= link_to "Melbourne", melbourne_path %></h1>
+  </div>
+</div>
     </div>
     <div class="col-md-6">
-    <p>sydney</p>
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= link_to "Melbourne", melbourne_path %></h1>
+    </div>
+    </div>
 
     </div>
+
 </div><p>gold coast</p>
 <p>brisbane</p>
 <p>perth</p>

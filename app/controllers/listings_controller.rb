@@ -13,6 +13,11 @@ class ListingsController < ApplicationController
   def show
   end
 
+  # GET /melbourne or /sydney etc
+  def melbourne
+    @listings = Listing.where(city_id: 0)
+  end
+  
 
   # GET /listings/new
   def new

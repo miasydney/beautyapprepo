@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get 'orders/success', to: 'orders#success'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get '/melbourne', to: 'listings#melbourne'
 end
