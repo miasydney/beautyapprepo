@@ -1,12 +1,42 @@
 <%# <h1>Pages#home</h1> %>
-<h1>The #1 place to find last minute beauty appointments in your city! 🤎 </h1>
+
+<div class="jumbotron">
+  <h1 class="display-4">The #1 place to find last minute beauty appointments in your city! 🤎 </h1>
+  <p class="lead">Create, browse and book salon appointments available in all major Australian cities. Save on last minute bookings.</p>
+  <hr class="my-4">
+<% if !user_signed_in? %>
+<p> Provide a beauty service and want to start listing appointments? Sign up <a href="/users/sign_up">here</a>. </p>
+<% end %>  
+<a class="btn btn-primary btn-lg" href="/listings" role="button">Browse Appointments</a>
+</div>
 <br>
 
-<% if !user_signed_in? %>
-<p> Provide a service and want to start listing appointments? Sign up <a href="/users/sign_up">here</a>. </p>
-<% end %>
-
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="jumbotron jumbotron-fluid col-md-6"">
+  <div class="container">
+    <h1 class="display-4"> Melbourne</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid col-md-6"">
+  <div class="container">
+    <h1 class="display-4"> Sydney</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid col-md-6"">
+  <div class="container">
+    <h1 class="display-4"> Gold Coast</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid col-md-6"">
+  <div class="container">
+    <h1 class="display-4"> Brisbane </h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
 
 <div class="row">
     <div class="col-md-6">

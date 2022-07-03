@@ -11,6 +11,7 @@
     <% @sold_appointments.each do |appointment| %>
       <div class="card"style="width: 18rem;">
         <%= image_tag appointment.listing.picture, class:"card-img-top" if appointment.listing.picture.attached? %>
+        <div class="card-body">
         <%= appointment.listing.title %>
         <%= appointment.listing.description %>
         <%= number_to_currency(appointment.listing.price) %>
@@ -26,6 +27,8 @@
         <%= appointment.listing.city.name %>
         BOOKED BY <%= appointment.buyer.firstname %>
         Contact details for <%= appointment.buyer.firstname %>: <%= appointment.buyer.email %>
+        </div>
+        
       </div>
 
     <% end %>
