@@ -1,28 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-
-  <% @listings.where(city_id: 3).each do |listing| %>
-        <p><%= listing.business %></p>
-  <% end %>
-
-<p>Note: add dropdown to change city here</p>
-<p>Note: also add logic to not show appointments where time has passed.</p>
-<p>+ order them from most recent using time</p>
-
-<%# dropdown menu to change city of listings being displayed %>
-<div class="dropdown"> 
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-  Change city</button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <%# <%= link_to "Melbourne", listings_path, style: "dropdown-item" %> %>
-    <a class="dropdown-item" href="#">Sydney</a>
-    <a class="dropdown-item" href="/melbourne">Melbourne</a>
-  </div>
-</div>
-
-  <%# <%= listing.category.name %>
-
-    <% @listings.each do |listing| %>
+<% @listings.each do |listing| %>
     <div class="card"style="width: 18rem;">
         <%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
         <div class="card-body">
@@ -47,4 +23,3 @@
       </div>
       <br><br>
     <% end %>
-<br>

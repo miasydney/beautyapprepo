@@ -15,9 +15,12 @@ class ListingsController < ApplicationController
 
   # GET /melbourne or /sydney etc
   def melbourne
-    @listings = Listing.where(city_id: 0)
+    @listings = Listing.where(city_id: 1)
   end
-  
+  def sydney
+    @listings = Listing.where(city_id: 2)
+  end
+
 
   # GET /listings/new
   def new
