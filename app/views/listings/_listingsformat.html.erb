@@ -18,10 +18,10 @@
 </div>
 
 <%# implementing filter function to filter the different categories using collection_select %>
-<%= form_tag listings_path, :method => 'get' do %>
-<%= collection_select :listing, :category_id, Category.all, :id, :name, prompt: true %>
-<%= submit_tag "look" %>
-<% end %>
+<%# <%= form_tag listings_path, :method => 'get' do %> %>
+<%# <%= collection_select :listing, :category_id, Category.all, :id, :name, prompt: true %> %>
+<%# <%= submit_tag "look" %> %>
+<%# <% end %>
 
 <%= params.inspect %>
 <%# this iterates over each listing within the listings table in the database and displays their attributes %>

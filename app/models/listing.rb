@@ -7,11 +7,11 @@ class Listing < ApplicationRecord
   has_one_attached :picture
 
   # def self.search(search)
-  #   where("category_id LIKE ?","%#{search}%")
+  #   where("category_id LIKE ?",%"#{search}")
   # end
 
   def self.search(search)
   joins(:category).where(
-    ["categories.name like ?", search])
+    ["categories.id like ?", search])
 end
 end
