@@ -16,6 +16,8 @@
 
   </div>
 </div>
+<br>
+<br>
 
 <%# implementing filter function to filter the different categories using collection_select %>
 <%# <%= form_tag listings_path, :method => 'get' do %> %>
@@ -23,10 +25,16 @@
 <%# <%= submit_tag "look" %> %>
 <%# <% end %>
 
-<%= params.inspect %>
+
+
+<%# <%= params.inspect %>
 <%# this iterates over each listing within the listings table in the database and displays their attributes %>
+
+
+<div class="row">
     <% @listings.each do |listing| %>
-    <div class="card"style="width: 18rem;">
+    <div class="col-md-6">
+      <div class="card" style="width: 25rem;">
         <%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
         <div class="card-body">
         <h5 class="card-title"><%= listing.title %></h5>
@@ -46,8 +54,11 @@
         <%= link_to 'EDIT', edit_listing_path(listing), class: 'btn btn-primary' %>
         <%= link_to 'DELETE', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
         <% end %>
-        </div>
-      </div>
-      <br><br>
+      <br><br>     
+          </div>
+              </div>
+</div>
     <% end %>
+
+</div>
 <br>
