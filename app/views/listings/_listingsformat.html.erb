@@ -20,22 +20,25 @@
 <br>
 
 <%# implementing filter function to filter the different categories using collection_select %>
-<%# <%= form_tag listings_path, :method => 'get' do %> %>
-<%# <%= collection_select :listing, :category_id, Category.all, :id, :name, prompt: true %> %>
-<%# <%= submit_tag "look" %> %>
+<%# <%= form_tag listings_path, :method => 'get' do %>
+<%# <%= collection_select :listing, :category_id, Category.all, :id, :name, prompt: true %>
+<%# <%= submit_tag "look" %>
 <%# <% end %>
 
 
 
 <%# <%= params.inspect %>
+
 <%# this iterates over each listing within the listings table in the database and displays their attributes %>
-
-
 <div class="row">
     <% @listings.each do |listing| %>
     <div class="col-md-6">
       <div class="card" style="width: 25rem;">
-        <%= image_tag listing.picture, class:"card-img-top" if listing.picture.attached? %></td>
+        <% if listing.picture.attached? %>
+        <%= image_tag listing.picture, class:"card-img-top" %></td>
+        <% else %>
+        <%= image_tag "noimgattached.jpg", class:"card-img-top" %></td>
+        <% end %>
         <div class="card-body">
         <h5 class="card-title"><%= listing.title %></h5>
         <h6 class="card-subtitle mb-2 text-muted"> Location: <%= listing.business %>, <%= listing.city.name %></h6>
