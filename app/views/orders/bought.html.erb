@@ -1,43 +1,39 @@
-<h1>Appointments you have reserved: </h1>
-<p>Find me in app/views/orders/bought.html.erb</p>
-
-Shows a list of appointments that the current user has booked.
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Business</th>
-      <th>Instagram</th>
-      <th>Booked</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Seller</th>
-      <th>Category</th>
-      <th>City</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1>Appointments you have coming up:</h1>
+<%# Shows a list of appointments that the current user has booked %>
+<p> Please note that some salons may wish to get in contact with you regarding your appointment.
+Please check the email you signed up for an account with for any correspondence from them prior to your appointment. </p>
 
   <%# note to self: style listings into cards %>
-  <tbody>
   <%# @booked_appointments instance variable has been defined in orders_controller bought method %>
+  <div class="row">
     <% @booked_appointments.each do |appointment| %>
-      <tr>
-        <td><%= image_tag appointment.listing.picture, class:"card-img-top" if appointment.listing.picture.attached? %></td>
-        <td><%= appointment.listing.title %></td>
-        <td><%= appointment.listing.description %></td>
-        <td><%= number_to_currency(appointment.listing.price) %></td>
-        <td><%= appointment.listing.business %></td>
-        <td><%= appointment.listing.instagram %></td>
-        <td><%= appointment.listing.date %></td>
-        <td><%= (appointment.listing.time).strftime("%H:%M %p") %></td>
-        <td><%= appointment.seller.firstname %></td>
-        <td><%= appointment.listing.category.name %></td>
-        <td><%= appointment.listing.city.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-md-6">
+        <div class="card" style="width: 25rem;">
+        <% if appointment.listing.picture.attached? %>
+        <%= image_tag appointment.listing.picture, class:"card-img-top" %>
+        <% else %>
+        <%= image_tag "noimgattached.jpg", class:"card-img-top" %>
+        <% end %>
+
+        <div class="card-body">
+        <h5>YOUR BOOKING: </h5>
+        <h5 class="card-title"><%= appointment.listing.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"> Location: <%= appointment.listing.business %>, <%= appointment.listing.city.name %></h6>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Price: <%= number_to_currency(appointment.listing.price) %></li>
+            <li class="list-group-item"> Time: <%= (appointment.listing.time).strftime("%H:%M %p") %>, <%= (appointment.listing.date).strftime("%B %d, %Y") %></li>
+          </ul>
+        <p><b>If you need to get in touch to confirm or adjust this appointment, contact <%= appointment.seller.firstname %> at <% appointment.listing.business %> via <%= appointment.seller.email %>.</b></p>
+        
+        <p class="card-text">Description: <%= appointment.listing.description %></p>
+        <%= appointment.listing.business %>
+        Instagram: <%= appointment.listing.instagram %>
+        <%= appointment.seller.firstname %>
+        <%= appointment.listing.category.name %>
+      </div>
+    </div><br><br>
+</div>
+<% end %>
+</div><br>
+
+

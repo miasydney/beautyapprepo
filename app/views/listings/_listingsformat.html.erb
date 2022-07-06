@@ -31,36 +31,32 @@
 
 <%# this iterates over each listing within the listings table in the database and displays their attributes %>
 <div class="row">
-    <% @listings.each do |listing| %>
+  <% @listings.each do |listing| %>
     <div class="col-md-6">
       <div class="card" style="width: 25rem;">
         <% if listing.picture.attached? %>
-        <%= image_tag listing.picture, class:"card-img-top" %></td>
+         <%= image_tag listing.picture, class:"card-img-top" %></td>
         <% else %>
-        <%= image_tag "noimgattached.jpg", class:"card-img-top" %></td>
+         <%= image_tag "noimgattached.jpg", class:"card-img-top" %></td>
         <% end %>
 
         <div class="card-body">
-        <h5 class="card-title"><%= listing.title %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"> Location: <%= listing.business %>, <%= listing.city.name %></h6>
-        <ul class="list-group list-group-flush">
-        <li class="list-group-item"> Price: <%= number_to_currency(listing.price) %></li>
-        <%# <%= listing.booked %>
-        <li class="list-group-item"> Time: <%= (listing.time).strftime("%H:%M %p") %> <%= (listing.date).strftime("%B %d, %Y") %></li>
-        </ul>
-        <p class="card-text"><%= listing.description %></p>
+          <h5 class="card-title"><%= listing.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"> Location: <%= listing.business %>, <%= listing.city.name %></h6>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Price: <%= number_to_currency(listing.price) %></li>
+            <%# <%= listing.booked %>
+            <li class="list-group-item"> Time: <%= (listing.time).strftime("%H:%M %p") %> <%= (listing.date).strftime("%B %d, %Y") %></li>
+          </ul>
+          <p class="card-text"><%= listing.description %></p>
 
         <%= link_to 'SEE MORE', listing, class: 'card-link' %>
         <% if current_user && current_user.id == listing.user_id %>
-        <%= link_to 'EDIT', edit_listing_path(listing), class: 'card-link' %>
-        <%= link_to 'DELETE', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %>
-
+          <%= link_to 'EDIT', edit_listing_path(listing), class: 'card-link' %>
+          <%= link_to 'DELETE', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %>
         <% end %>    
-          </div>
-              </div>
-              <br><br>
+      </div>
+    </div><br><br>
 </div>
-    <% end %>
-
-</div>
-<br>
+<% end %>
+</div><br>
