@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    @listings = Listing.where(booked: false)
   end
 
   # GET /melbourne or /sydney etc

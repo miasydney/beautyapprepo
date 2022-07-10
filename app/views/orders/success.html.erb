@@ -1,5 +1,6 @@
 <div class="alert alert-success">
 <h3>Congratulations <%= current_user.firstname %>! You have successfully reserved this appointment! </h3>
 <br><br>
-<h4>To see all your appointment reservations, please see <%= link_to "Your Appointments", orders_bought_path %>.</h4>
+<h4>To see all your appointment reservations, please see <%= link_to "Your Appointments", orders_bought_path %>.</h4><br>
+<h5>Continue browsing <%= link_to "available appointments", listings_path %>.</h5>
 </div>

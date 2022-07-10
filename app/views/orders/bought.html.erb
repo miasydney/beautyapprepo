@@ -2,8 +2,9 @@
 <hr class="my-4">
 
 <%# Shows a list of appointments that the current user has booked %>
-<p> Please note that some salons may wish to get in contact with you regarding your appointment.
+<p> Please note that some salons may wish to get in contact with you regarding your booked appointments.
 Please check your email inbox for <%= current_user.email %> for any correspondence from them prior to your appointment. </p>
+<hr class="my-4">
 
   <%# @booked_appointments instance variable has been defined in orders_controller bought method %>
   <div class="row">
@@ -17,22 +18,21 @@ Please check your email inbox for <%= current_user.email %> for any corresponden
         <% end %>
 
         <div class="card-body">
-        <h5>YOUR BOOKING: </h5>
-        <h5 class="card-title"><%= appointment.listing.title %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"> Location: <%= appointment.listing.business %>, <%= appointment.listing.city.name %></h6>
-        <ul class="list-group list-group-flush">
+          <h5>YOUR BOOKING: </h5>
+          <h5 class="card-title"><%= appointment.listing.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"> Location: <%= appointment.listing.business %>, <%= appointment.listing.city.name %></h6>
+          <ul class="list-group list-group-flush">
             <li class="list-group-item"> Price: <%= number_to_currency(appointment.listing.price) %></li>
             <li class="list-group-item"> Time: <%= (appointment.listing.time).strftime("%H:%M %p") %>, <%= (appointment.listing.date).strftime("%B %d, %Y") %></li>
           </ul>
-        <p><b>If you need to get in touch to confirm or adjust this appointment, contact <%= appointment.seller.firstname %> at <%= appointment.listing.business %> via <%= appointment.seller.email %>.</b></p>
+          <p class="card-text">Description: <%= appointment.listing.description %></p>
+
+          <h5>Salon Contact Details: </h5>
+            <p><b>If you need to get in touch to confirm or adjust this appointment, contact <%= appointment.seller.firstname %> at <%= appointment.listing.business %> via <%= appointment.seller.email %>.</b></p>
         
-        <p class="card-text">Description: <%= appointment.listing.description %></p>
-        <%= appointment.listing.business %>
-        Instagram: <%= appointment.listing.instagram %>
-        <%= appointment.seller.firstname %>
-        <%= appointment.listing.category.name %>
-      </div>
+             Instagram: <%= appointment.listing.instagram %>
+         </div>
     </div><br><br>
-</div>
-<% end %>
+  </div>
+      <% end %>
 </div><br>
