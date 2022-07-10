@@ -14,3 +14,17 @@
  *= require_self
  */
 @import "bootstrap/scss/bootstrap";
+
+.btn-primary {
+    border: pink;
+    background-color: pink;
+}
+
+.btn-primary:hover {
+    background-color: rgb(79, 58, 58);
+}
+
+.btn-light:hover {
+    background-color: pink;
+    color: black;
+}
