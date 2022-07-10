@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%# card starts here %>
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Back', listings_path, class:"btn btn-primary" %><br><br>
 
 <div class="card mb-3">  
   <% if @listing.picture.attached? %>
@@ -29,7 +29,7 @@
   <% if !@listing.booked && current_user && current_user.id == @listing.user_id %>
       <p> Your appointment listing is available for booking. </p>
     <% elsif @listing.booked && current_user && current_user.id == @listing.user_id%>
-      <p> Congratulations! This listing has been reserved by: . Their contact email is: . </p>
+      <p> Congratulations! This listing has been booked. You can see all of the details about your booked listings in your <%= link_to 'Dashboard', orders_sold_path %>.</p>
     <% elsif @listing.booked %>
       <p>NO LONGER AVAILABLE</p>
     <% elsif current_user %>
