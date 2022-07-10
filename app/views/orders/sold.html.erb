@@ -1,35 +1,39 @@
-<h1>Manage Your Listings: </h1>
-
-<a class="btn btn-primary" href="/listings/new">Create New Listing</a>
-<br>
-
-<h2>Your Booked Listings:</h2>
-
-<p>Congratulations! The following listings that you created have been booked:</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Manage Your listings: </h1>
+    <a class="btn btn-primary" href="/listings/new">Create New Listing</a>
+    <br>
+    <hr class="my-4">
+    <h1>Your Booked Listings: </h1>
+    <p class="lead">Congratulations! The following listings that you created have been booked:</p>
 
   <%# note to self: style listings into cards %>  <%# @booked_appointments instance variable has been defined in orders_controller bought method %>
+   <div class="row"> 
     <% @sold_appointments.each do |appointment| %>
-      <div class="card"style="width: 18rem;">
-        <%= image_tag appointment.listing.picture, class:"card-img-top" if appointment.listing.picture.attached? %>
+    <div class="col-md-6">
+      <div class="card" style="width: 25rem;">
+      <% if appointment.listing.picture.attached? %>
+         <%= image_tag appointment.listing.picture, class:"card-img-top" %></td>
+        <% else %>
+         <%= image_tag "noimgattached.jpg", class:"card-img-top" %></td>
+        <% end %>
         <div class="card-body">
-        <%= appointment.listing.title %>
-        <%= appointment.listing.description %>
-        <%= number_to_currency(appointment.listing.price) %>
-        <%= appointment.listing.business %>
-        <%= appointment.listing.instagram %>
-        <%= appointment.listing.date %>
-        <%= (appointment.listing.time).strftime("%H:%M %p") %>
-        <%= appointment.seller.firstname %>
-        <%= appointment.listing.category.name %>
-        <%= appointment.listing.city.name %>
+        <h5 class="card-title"><%= appointment.listing.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"> Location: <%= appointment.listing.business %>, <%= appointment.listing.city.name %></h6>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Price: <%= number_to_currency(appointment.listing.price) %></li>
+            <li class="list-group-item"> Time: <%= (appointment.listing.time).strftime("%H:%M %p") %> <%= (appointment.listing.date).strftime("%B %d, %Y") %></li>
+          </ul>
+          <p class="card-text"><%= appointment.listing.description %></p>
 
-        <%= appointment.listing.category.name %>
-        <%= appointment.listing.city.name %>
-        BOOKED BY <%= appointment.buyer.firstname %>
-        Contact details for <%= appointment.buyer.firstname %>: <%= appointment.buyer.email %>
-        </div>
-        
+
+        <strong>BOOKED BY: <%= appointment.buyer.firstname %> <%= appointment.buyer.lastname %></strong><br>
+        <strong>Contact details for <%= appointment.buyer.firstname %>: <%= appointment.buyer.email %></strong>
       </div>
+    </div><br><br>
+</div>
+<% end %>
+</div><br>
 
-    <% end %>
-
+  </div>
+</div>

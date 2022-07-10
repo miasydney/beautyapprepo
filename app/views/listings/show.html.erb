@@ -1,95 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-<% if @listing.picture.attached? %>
-  <%= image_tag @listing.picture, alt: @listing.title %>
-<% else %>
-  <%= image_tag 'noimgattached.jpg', alt: @listing.title %>
-  <% end %>
-</div>
-
-<% if !@listing.booked && current_user && current_user.id == @listing.user_id %>
-
-  <p> Your appointment listing is available for booking. </p>
-
-<% elsif @listing.booked && current_user && current_user.id == @listing.user_id%>
-
-  <p> Congratulations! This listing has been reserved by: . Their contact email is: . </p>
-
-<% elsif @listing.booked %>
-  <p>NO LONGER AVAILABLE</p>
-
-<% elsif current_user %>
-  <%= button_to "BOOK APPOINTMENT", place_order_path %>
-
-<% else %>
-  <p> Please log in to reserve appointments </p>
-<% end %>
-
-<%# <% if current_user && !@listing.booked %>
-  <%# <%= button_to "BOOK APPOINTMENT", place_order_path %> %>
-<%# <% else %> %>
-  <%# <p> NO LONGER AVAILABLE </p> %>
-<%# <% end %> %> %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<p>
-  <strong>Business:</strong>
-  <%= @listing.business %>
-</p>
-
-<p>
-  <strong>Instagram:</strong>
-  <%= @listing.instagram %>
-</p>
-
-<p>
-  <strong>Booked:</strong>
-  <%= @listing.booked %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @listing.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @listing.time %>
-</p>
-
-<p>Who to contact about this appointment:</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @listing.user_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @listing.category_id %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @listing.city_id %>
-</p>
-
-<% if current_user && current_user.id == @listing.user_id %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> |
-<% end %>
+<%# card starts here %>
 <%= link_to 'Back', listings_path %>
+
+<div class="card mb-3">  
+  <% if @listing.picture.attached? %>
+    <%= image_tag @listing.picture, alt: @listing.title, class:"card-img-top", style:"height: 30em;" %>
+  <% else %>
+    <%= image_tag 'noimgattached.jpg', alt: @listing.title, class:"card-img-top", style:"height: 30em;" %>
+  <% end %>
+
+  <div class="card-body">
+    <h5 class="card-title"><strong><%= @listing.title %></strong></h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Salon Location:</strong> <%= @listing.business %>, <%= @listing.city.name %></li>
+      <li class="list-group-item"><strong>Instagram:</strong> @<%= @listing.instagram %></li>
+      <li class="list-group-item"><strong>Price:</strong> <%= number_to_currency(@listing.price) %></li>
+      <li class="list-group-item"><strong>Time:</strong>  <%= (@listing.time).strftime("%H:%M %p") %> <%= (@listing.date).strftime("%B %d, %Y") %></li>
+      <li class="list-group-item"><strong>Category:</strong> <%= @listing.category.name %></li>
+    </ul><br>
+    
+    <p class="card-text"><strong>Description: </strong></p>
+    <p><%= @listing.description %></p>
+
+    <p class="card-text"><small class="text-muted">Listed by <%= @listing.user.firstname %> at <%= @listing.business %></small></p>
+
+  <%# checks if booked boolean in the listings table for this listing in the database is true or false %>
+  <% if !@listing.booked && current_user && current_user.id == @listing.user_id %>
+      <p> Your appointment listing is available for booking. </p>
+    <% elsif @listing.booked && current_user && current_user.id == @listing.user_id%>
+      <p> Congratulations! This listing has been reserved by: . Their contact email is: . </p>
+    <% elsif @listing.booked %>
+      <p>NO LONGER AVAILABLE</p>
+    <% elsif current_user %>
+      <%= button_to "BOOK APPOINTMENT", place_order_path, class:"btn btn-primary" %>
+    <% else %>
+      <p> You need to log in to reserve appointments. </p>
+  <% end %>
+
+
+    <% if current_user && current_user.id == @listing.user_id %>
+    <%= link_to 'Edit', edit_listing_path(@listing), class:"btn btn-primary" %> |
+    <% end %>
+    <%= link_to 'Back to all listings', listings_path, class:"btn btn-primary" %>
+
+  </div>
+</div>

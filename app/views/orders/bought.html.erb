@@ -1,9 +1,10 @@
 <h1>Appointments you have coming up:</h1>
+<hr class="my-4">
+
 <%# Shows a list of appointments that the current user has booked %>
 <p> Please note that some salons may wish to get in contact with you regarding your appointment.
-Please check the email you signed up for an account with for any correspondence from them prior to your appointment. </p>
+Please check your email inbox for <%= current_user.email %> for any correspondence from them prior to your appointment. </p>
 
-  <%# note to self: style listings into cards %>
   <%# @booked_appointments instance variable has been defined in orders_controller bought method %>
   <div class="row">
     <% @booked_appointments.each do |appointment| %>
@@ -35,5 +36,3 @@ Please check the email you signed up for an account with for any correspondence 
 </div>
 <% end %>
 </div><br>
-
-
